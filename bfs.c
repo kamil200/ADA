@@ -1,41 +1,76 @@
 #include <stdio.h>
-int N, M;
-void createAdjMatrix(int Adj[][N + 1], int arr[][2])
+
+int a[20][20], q[20], visited[20], n, i, j, f = 0, r = -1;
+
+void bfs(int v)
 {
-    for (int i = 0; i < N + 1; i++)
+
+    for (i = 1; i <= n; i++)
+
+        if (a[v][i] && !visited[i])
+
+            q[++r] = i;
+
+    if (f <= r)
     {
-        for (int j = 0; j < N + 1; j++)
+
+        visited[q[f]] = 1;
+
+        bfs(q[f++]);
+    }
+}
+
+int main()
+{
+
+    int v;
+
+    printf("Enter the number of vertices: ");
+
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++)
+    {
+
+        q[i] = 0;
+
+        visited[i] = 0;
+    }
+
+    printf("\nEnter graph data in matrix form:\n");
+
+    for (i = 1; i <= n; i++)
+    {
+
+        for (j = 1; j <= n; j++)
         {
-            Adj[i][j] = 0;
+
+            scanf("%d", &a[i][j]);
         }
     }
 
-    for (int i = 0; i < M; i++)
+    printf("Enter the starting vertex: ");
+
+    scanf("%d", &v);
+
+    bfs(v);
+
+    printf("\nThe node which are reachable are:");
+
+    for (i = 1; i <= n; i++)
     {
-        int x = arr[i][0];
-        int y = arr[i][1];
-        Adj[x][y] = 1;
-        Adj[y][x] = 1;
-    }
-}
-void printAdjMatrix(int Adj[][N + 1])
-{
-    for (int i = 1; i < N + 1; i++)
-    {
-        for (int j = 1; j < N + 1; j++)
+
+        if (visited[i])
+
+            printf(" %d", i);
+
+        else
         {
-            printf("%d ", Adj[i][j]);
+
+            printf("\nBFS is not possible. All nodes are not reachable!");
+
+            break;
         }
-        printf("\n");
     }
-}
-int main()
-{
-    N = 4;
-    int arr[][2] = {{1, 2}, {2, 3}, {3, 1}, {3, 4}, {4, 1}, {1, 3}};
-    M = sizeof(arr) / sizeof(arr[0]);
-    int Adj[N + 1][N + 1];
-    createAdjMatrix(Adj, arr);
-    printAdjMatrix(Adj);
     return 0;
 }

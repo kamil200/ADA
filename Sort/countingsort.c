@@ -52,8 +52,22 @@ void printa(int a[], int size)
 
 int main()
 {
-    int a[] = {4, 2, 2, 8, 3, 3, 1};
-    int n = sizeof(a) / sizeof(a[0]);
-    countingSort(a, n);
-    printa(a, n);
+    int list[50];
+    int i, size;
+
+    printf("Enter Total Number of Elements:");
+    scanf("%d", &size);
+    printf("Enter The Elements:\n");
+    for (i = 0; i < size; i++)
+    {
+        scanf("%d", &list[i]);
+    }
+    countingSort(list, size);
+    printf("After Counting Sort:\n");
+    for (i = 0; i < size; i++)
+    {
+        printf("%d   ", list[i]);
+    }
+
+    return 0;
 }
