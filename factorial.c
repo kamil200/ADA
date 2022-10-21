@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <sys/time.h>
 int fact_iterative(int);

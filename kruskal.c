@@ -1,6 +1,4 @@
-
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
 int i,
     j,
@@ -14,7 +12,7 @@ int i,
 int min, mincost = 0, cost[9][9], parent[9];
 int find(int);
 int uni(int, int);
-void main()
+int main()
 {
     printf("\n\tImplementation of Kruskal's algorithm\n");
     printf("\nEnter the no. of vertices:");
@@ -54,7 +52,7 @@ void main()
         cost[a][b] = cost[b][a] = 999;
     }
     printf("\n\tMinimum cost = %d\n", mincost);
-    getch();
+    return 0;
 }
 int find(int i)
 {

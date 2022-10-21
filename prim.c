@@ -61,4 +61,5 @@ int prims(int s)
         cost[u][v] = cost[v][u] = 999;
     }
     printf("\nCost of constructing MST is %d\n", min_cost);
+    return 0;
 }
